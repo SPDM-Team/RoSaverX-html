@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,13 +29,15 @@
             font-size: 1.5rem;
         }
 
-        select, button {
+        select,
+        button {
             padding: 1.5rem;
             margin: 1.5rem 0;
             font-size: 1.5rem;
             width: 100%;
             font-family: "Montserrat", sans-serif;
-            border-radius: 10px;  /* Corner radius */
+            border-radius: 10px;
+            /* Corner radius */
         }
 
         button {
@@ -69,15 +70,32 @@
     <p>To use our app, you must have a Roblox group.</p>
     <select>
         <option value="" disabled selected>Select your group</option>
-        <!-- Here you can add the group options -->
-        <option value="group1">Group 1</option>
-        <option value="group2">Group 2</option>
-        <!-- ... -->
+        <option value="bjbjb">fjksdlaf</option>
     </select>
     <button>Next</button>
     <div class="help-text">
-        Need help? <a href="https://en.help.roblox.com/hc/en-us/articles/203313730-How-to-make-and-join-Groups">Click here</a>.
+        Need help? <a href="group-tutorial.html">Click
+            here</a>.
     </div>
+
+    <script>
+        // Get the group names from the Java interface
+        let groupNames = Android.IlIlIlIllIIlIlIlIlIl();
+
+        // Get the select element from the DOM
+        let selectElement = document.querySelector('select');
+
+        // Loop through each group name and add it to the select element
+        for (let i = 0; i < groupNames.length; i++) {
+            let option = document.createElement('option');
+            option.value = groupNames[i];
+            option.textContent = groupNames[i];
+            selectElement.appendChild(option);
+        }
+        document.querySelector('button').onclick = function () {
+            Android.lIlIlIlIlIlIlIllllIIlI(selectElement.selectedIndex.textContent)
+        }
+    </script>
 </body>
 
 </html>
