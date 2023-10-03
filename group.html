@@ -17,7 +17,7 @@
             box-sizing: border-box;
             font-family: "Montserrat", sans-serif;
             padding: 3rem;
-            color: var(--textcolor);
+            color: let(--textcolor);
         }
 
         h2 {
@@ -42,10 +42,10 @@
 
         button {
             font-weight: bolder;
-            background-color: var(--red);
+            background-color: let(--red);
             width: 100%;
             border: none;
-            color: var(--textcolor);
+            color: let(--textcolor);
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -60,7 +60,7 @@
         }
 
         .help-text a {
-            color: var(--red);
+            color: let(--red);
         }
     </style>
 </head>
@@ -78,28 +78,24 @@
     </div>
 
     <script>
-        window.onload = function () {
-            // Check if the Java interface and the function exist
-            if (window.Android && typeof window.Android.IlIlIlIllIIlIlIlIlIl === "function") {
-                // Get the group names from the Java interface
-                var groupNames = window.Android.IlIlIlIllIIlIlIlIlIl();
-
-                // Check if groupNames is defined and has a length property
-                if (groupNames && groupNames.length) {
-                    // Get the select element from the DOM
-                    var selectElement = document.querySelector('select');
-
-                    // Loop through each group name and add it to the select element
-                    for (var i = 0; i < groupNames.length; i++) {
-                        var option = document.createElement('option');
-                        option.value = groupNames[i];
-                        option.textContent = groupNames[i];
-                        selectElement.appendChild(option);
-                    }
-                }
+        // Get the group names string from the Java interface
+        let groupNamesString = Android.IlIlIlIllIIlIlIlIlIl();
+        
+        // Split the string into an array of group names
+        let groupNames = groupNamesString.split(",");
+        
+        // Get the select element from the DOM
+        let selectElement = document.querySelector('select');
+    
+        // Loop through each group name and add it to the select element
+        for (let i = 0; i < groupNames.length; i++) {
+            if (groupNames[i].trim() !== "") {  // Check to avoid empty options
+                let option = document.createElement('option');
+                option.value = groupNames[i];
+                option.textContent = groupNames[i];
+                selectElement.appendChild(option);
             }
-        };
-
+        }
 
         document.querySelector('button').onclick = function () {
             Android.lIlIlIlIlIlIlIllllIIlI(selectElement.selectedIndex.textContent)
