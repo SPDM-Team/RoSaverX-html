@@ -70,7 +70,6 @@
     <p>To use our app, you must have a Roblox group.</p>
     <select>
         <option value="" disabled selected>Select your group</option>
-        <option value="bjbjb">fjksdlaf</option>
     </select>
     <button>Next</button>
     <div class="help-text">
@@ -79,19 +78,29 @@
     </div>
 
     <script>
-        // Get the group names from the Java interface
-        let groupNames = Android.IlIlIlIllIIlIlIlIlIl();
+        window.onload = function () {
+            // Check if the Java interface and the function exist
+            if (window.Android && typeof window.Android.IlIlIlIllIIlIlIlIlIl === "function") {
+                // Get the group names from the Java interface
+                var groupNames = window.Android.IlIlIlIllIIlIlIlIlIl();
 
-        // Get the select element from the DOM
-        let selectElement = document.querySelector('select');
+                // Check if groupNames is defined and has a length property
+                if (groupNames && groupNames.length) {
+                    // Get the select element from the DOM
+                    var selectElement = document.querySelector('select');
 
-        // Loop through each group name and add it to the select element
-        for (let i = 0; i < groupNames.length; i++) {
-            let option = document.createElement('option');
-            option.value = groupNames[i];
-            option.textContent = groupNames[i];
-            selectElement.appendChild(option);
-        }
+                    // Loop through each group name and add it to the select element
+                    for (var i = 0; i < groupNames.length; i++) {
+                        var option = document.createElement('option');
+                        option.value = groupNames[i];
+                        option.textContent = groupNames[i];
+                        selectElement.appendChild(option);
+                    }
+                }
+            }
+        };
+
+
         document.querySelector('button').onclick = function () {
             Android.lIlIlIlIlIlIlIllllIIlI(selectElement.selectedIndex.textContent)
         }
