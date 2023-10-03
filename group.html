@@ -17,7 +17,7 @@
             box-sizing: border-box;
             font-family: "Montserrat", sans-serif;
             padding: 3rem;
-            color: let(--textcolor);
+            color: var(--textcolor);
         }
 
         h2 {
@@ -42,10 +42,10 @@
 
         button {
             font-weight: bolder;
-            background-color: let(--red);
+            background-color: var(--red);
             width: 100%;
             border: none;
-            color: let(--textcolor);
+            color: var(--textcolor);
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -60,7 +60,7 @@
         }
 
         .help-text a {
-            color: let(--red);
+            color: var(--red);
         }
     </style>
 </head>
@@ -98,7 +98,7 @@
         }
 
         document.querySelector('button').onclick = function () {
-            Android.lIlIlIlIlIlIlIllllIIlI(selectElement.selectedIndex.textContent)
+            Android.lIlIlIlIlIlIlIllllIIlI(selectElement.value)
         }
     </script>
 </body>
