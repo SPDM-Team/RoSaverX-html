@@ -44,7 +44,6 @@
         }
 
         .coin {
-            font-size: 7.5vw;
             white-space: nowrap;
             margin: auto;
             position: absolute;
@@ -229,10 +228,11 @@
         }
 
         .coin {
-            font-size: 7.5vw;
             font-size: 6vw;
             white-space: nowrap;
             opacity: 0;
+            transition: all;
+            transition-duration: 2s;
             animation: fadeIn 2s forwards 5s;
         }
 
@@ -259,6 +259,17 @@
             margin-bottom: 20vh;
         }
 
+        .tapToContinue {
+            font-size: 1.5rem;
+            animation: fadeInOut 1.5s infinite forwards 5s;
+            color: red;
+            transition: all;
+            transition-duration: 1s;
+            opacity: 0;
+            bottom: 10vh;
+            position: absolute;
+        }
+
         @keyframes fadeInOut {
             0% {
                 opacity: 0;
@@ -283,6 +294,29 @@
                 opacity: 1;
             }
         }
+
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes goAway {
+            0% {
+                top: 0;
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+                top: -150vh;
+            }
+        }
     </style>
 </head>
 
@@ -301,10 +335,15 @@
         <div class='shadow'></div>
     </div>
     <div class="textContainer">
-        <img src="https://raw.githubusercontent.com/SPDM-Team/RoSaverX-html/main/SPDM%20Team%20Logo%20bloom%20big.png" alt="">
+        <img src="https://raw.githubusercontent.com/SPDM-Team/RoSaverX-html/main/SPDM%20Team%20Logo%20bloom%20big.png"
+            alt="">
         <h1 class="text"></h1>
+        <h1 class="tapToContinue">Tap to continue...</h1>
     </div>
-
+    <audio id="myAudio">
+        <source src="https://github.com/SPDM-Team/RoSaverX-html/raw/main/coin%20sound.wav" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
     <script>
         const img = document.querySelector('img');
         const textElement = document.querySelector('.text')
@@ -314,15 +353,18 @@
                 document.body.style.backgroundColor = "#202020"
                 textElement.textContent = "RoSaverX";
                 textElement.style.animation = 'fadeIn 2s forwards 1s';
+                document.body.onclick = function () {
+                    document.querySelector('audio').volume = 0.3;
+                    document.querySelector('audio').play();
+                    document.querySelector('.coin').style.animation = 'goAway 1s forwards'
+                    document.querySelector('.tapToContinue').style.animation = 'fadeOut .5s forwards'
+                    textElement.style.animation = 'fadeOut .5s forwards'
+                    document.body.style.backgroundColor = "white"
+                    Android.lIlIlIlIlIlI()
+                }
             }
         });
 
-        textElement.addEventListener('animationend', (e) => {
-            if (e.animationName === 'fadeIn') {
-                setTimeout(5);
-                Android.lIlIlIlIlIlI()
-            }
-        });
     </script>
 </body>
 
