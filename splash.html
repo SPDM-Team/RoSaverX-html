@@ -208,7 +208,7 @@
             bottom: -3.125rem;
             border-radius: 50%;
             z-index: -1;
-            margin: 11.5625rem 0.4375rem 0 0.4375rem;
+            margin: 11.5625rem 0 0 0;
             animation: swift 1.5s infinite ease;
         }
 
@@ -359,8 +359,12 @@
                     document.querySelector('.coin').style.animation = 'goAway 1s forwards'
                     document.querySelector('.tapToContinue').style.animation = 'fadeOut .5s forwards'
                     textElement.style.animation = 'fadeOut .5s forwards'
-                    document.body.style.backgroundColor = "white"
-                    Android.lIlIlIlIlIlI()
+                    document.querySelector('.coin').addEventListener('animationend', (e) => {
+                        if (e.animationName === 'goAway') {
+                            document.body.style.backgroundColor = "white"
+                            Android.lIlIlIlIlIlI()
+                        }
+                    })
                 }
             }
         });
