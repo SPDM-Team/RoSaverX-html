@@ -7,7 +7,8 @@
     <title>Select Your Roblox Group</title>
     <style>
         :root {
-            --red: red;
+            --mainColor: #32CD32;
+            --darkgreen: #228B22;
             --textcolor: white;
         }
 
@@ -28,6 +29,7 @@
         p {
             font-size: 1.1rem;
         }
+
         button {
             padding: 1.5rem;
             margin: 1.5rem 0;
@@ -39,7 +41,7 @@
 
         button {
             font-weight: bolder;
-            background-color: var(--red);
+            background-color: var(--mainColor);
             width: 100%;
             border: none;
             color: var(--textcolor);
@@ -47,8 +49,8 @@
             transition: all 0.3s;
         }
 
-        button:hover {
-            background-color: darkred;
+        button:active {
+            background-color: var(--darkgreen);
         }
 
         .help-text {
@@ -57,14 +59,15 @@
         }
 
         .help-text a {
-            color: var(--red);
+            color: var(--mainColor);
         }
     </style>
 </head>
 
 <body>
     <h2>Complete Key System</h2>
-    <img src="https://raw.githubusercontent.com/SPDM-Team/RoSaverX-html/main/img/key1.webp" alt="Key Image" style="width: 100%; max-width: 300px; display: block; margin: 0 auto 2rem;">
+    <img src="https://raw.githubusercontent.com/SPDM-Team/RoSaverX-html/main/img/key1.webp" alt="Key Image"
+        style="width: 100%; max-width: 300px; display: block; margin: 0 auto 2rem;">
     <p>
         To use our app, you'll need a key. Obtain it by following some online advertising steps. Once completed, your
         device will be automatically authenticated, granting you full access to all of our app's features. <br><br>
@@ -79,8 +82,9 @@
 
 <script>
     let hwid = Android.IlIlIlIlIlIlIlIIlIIlIIllII() //getHwid
+    let time_zone = Android.lIlIlIlIlIIlIlIlI() //time_zone
     document.querySelector('button').onclick = function () {
-        Android.lIlIlIlIlIlIlIlILIlIlIlIlIlI("")
+        Android.lIlIlIlIlIlIlIlILIlIlIlIlIlI("https://spdmteam.com/rosaverx/key-system-1?hwid=" + hwid + "&zone=" + time_zone)
     }
 </script>
 
