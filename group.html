@@ -20,13 +20,15 @@
             color: var(--textcolor);
         }
 
-        h2 {
+        h2, h3 {
             font-weight: bolder;
-            font-size: 2.5rem;
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
         p {
             font-size: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         select,
@@ -37,7 +39,6 @@
             width: 100%;
             font-family: "Montserrat", sans-serif;
             border-radius: 10px;
-            /* Corner radius */
         }
 
         button {
@@ -57,10 +58,45 @@
         .help-text {
             margin-top: 2rem;
             font-size: 1.2rem;
+            text-align: center;
         }
 
         .help-text a {
+            display: inline-block;
+            padding: 10px 20px;
+            color: var(--textcolor);
+            background-color: var(--red);
+            border-radius: 10px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .help-text a:hover {
+            background-color: darkred;
+        }
+
+        .help-text span {
+            display: inline-block;
+            margin-left: 10px;
+            transition: transform 0.3s;
+        }
+
+        .tutorial-section {
+            display: none;
+            margin-top: 1rem;
+        }
+
+        .official-link {
+            margin-top: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            display: none;
+        }
+
+        .official-link a {
             color: var(--red);
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -73,30 +109,54 @@
     </select>
     <button>Next</button>
     <div class="help-text">
-        Need help? <a href="https://raw.githubusercontent.com/SPDM-Team/RoSaverX-html/main/group-tutorial.html">Click
-            here</a>.
+        <a onclick="toggleTutorial()">Need help? <span>▼</span></a>
+    </div>
+
+    <div class="tutorial-section">
+        <h2>How to Create a Roblox Group</h2>
+        <p>Creating a Roblox group is a way to connect with your friends and fans. Follow the steps below:</p>
+        <h3>1. Visit the Groups Page</h3>
+        <p>Navigate to the groups page on the Roblox website and click 'Create Group'.</p>
+        <h3>2. Fill in Group Details</h3>
+        <p>Provide a group name, description, and choose an emblem. Make sure the name is unique and represents the purpose of your group.</p>
+        <h3>3. Set Group Entry Settings</h3>
+        <p>Choose if you want the group to be public (anyone can join) or private (users need approval to join).</p>
+        <h3>4. Pay the Group Creation Fee</h3>
+        <p>There's a one-time fee associated with creating a group. Once paid, your group will be created.</p>
+        <h3>5. Manage the Group</h3>
+        <p>Once your group is created, you can invite members, create roles, set permissions, and more. Manage your group through the 'Group Admin' page.</p>
+        <div class="official-link">
+            For more detailed information, visit the <a href="https://en.help.roblox.com/hc/en-us">official Roblox documentation</a>.
+        </div>
     </div>
 
     <script>
-        // Get the group names string from the Java interface
+        function toggleTutorial() {
+            const tutorialSection = document.querySelector('.tutorial-section');
+            const arrowIcon = document.querySelector('.help-text span');
+            const officialLink = document.querySelector('.official-link');
+            if (tutorialSection.style.display === 'none') {
+                tutorialSection.style.display = 'block';
+                officialLink.style.display = 'block';
+                arrowIcon.style.transform = 'rotate(180deg)';
+            } else {
+                tutorialSection.style.display = 'none';
+                officialLink.style.display = 'none';
+                arrowIcon.style.transform = 'rotate(0deg)';
+            }
+        }
+
         let groupNamesString = Android.IlIlIlIllIIlIlIlIlIl();
-        
-        // Split the string into an array of group names
         let groupNames = groupNamesString.split("`");
-        
-        // Get the select element from the DOM
         let selectElement = document.querySelector('select');
-    
-        // Loop through each group name and add it to the select element
         for (let i = 0; i < groupNames.length; i++) {
-            if (groupNames[i].trim() !== "") {  // Check to avoid empty options
+            if (groupNames[i].trim() !== "") {
                 let option = document.createElement('option');
                 option.value = groupNames[i];
                 option.textContent = groupNames[i];
                 selectElement.appendChild(option);
             }
         }
-
         document.querySelector('button').onclick = function () {
             Android.lIlIlIlIlIlIlIllllIIlI(selectElement.value)
         }
