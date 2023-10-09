@@ -7,7 +7,7 @@
     <title>Select Your Roblox Group</title>
     <style>
         :root {
-            --red: red;
+            --green: #32CD32;
             --textcolor: white;
         }
 
@@ -44,7 +44,7 @@
 
         button {
             font-weight: bolder;
-            background-color: var(--red);
+            background-color: var(--green);
             width: 100%;
             border: none;
             color: var(--textcolor);
@@ -52,8 +52,8 @@
             transition: all 0.3s;
         }
 
-        button:hover {
-            background-color: darkred;
+        button:active {
+            background-color: #228B22;
         }
 
         .help-text {
@@ -66,15 +66,15 @@
             display: inline-block;
             padding: 10px 20px;
             color: var(--textcolor);
-            background-color: var(--red);
+            background-color: var(--green);
             border-radius: 10px;
             cursor: pointer;
             text-decoration: none;
             transition: background-color 0.3s;
         }
 
-        .help-text a:hover {
-            background-color: darkred;
+        .help-text a:active {
+            background-color: #228B22;
         }
 
         .help-text span {
@@ -96,7 +96,7 @@
         }
 
         .official-link a {
-            color: var(--red);
+            color: var(--green);
             text-decoration: underline;
         }
     </style>
@@ -125,9 +125,9 @@
         <p>Choose if you want the group to be public (anyone can join) or private (users need approval to join).</p>
         <h3>4. Pay the Group Creation Fee</h3>
         <p>There's a one-time fee associated with creating a group. Once paid, your group will be created.</p>
-        <h3>5. Manage the Group</h3>
-        <p>Once your group is created, you can invite members, create roles, set permissions, and more. Manage your
-            group through the 'Group Admin' page.</p>
+        <h3>5. View Group Robux</h3>
+        <p>To check your group's Robux balance, go to the 'Group Admin' page and look under the 'Revenue' section. The
+            total Robux owned by the group will be displayed there.</p>
         <div class="official-link">
             For more detailed information, visit the <a
                 onclick="Android.lIlIlIlIlIlIlIlILIlIlIlIlIlI('https://en.help.roblox.com/hc/en-us/articles/203313730-How-to-Make-and-Join-Groups')">official
@@ -141,7 +141,7 @@
             const tutorialSection = document.querySelector('.tutorial-section');
             const arrowIcon = document.querySelector('.help-text span');
             const officialLink = document.querySelector('.official-link');
-            if (tutorialSection.style.display === 'none') {
+            if (tutorialSection.style.display != 'block') {
                 tutorialSection.style.display = 'block';
                 officialLink.style.display = 'block';
                 arrowIcon.style.transform = 'rotate(180deg)';
